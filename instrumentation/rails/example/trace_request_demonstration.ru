@@ -23,8 +23,9 @@ require 'action_controller/railtie'
 class TraceRequestApp < Rails::Application
   config.root = __dir__
   config.hosts << 'example.org'
-  secrets.secret_key_base = 'secret_key_base'
+  config.secret_key_base = 'secret_key_base'
   config.eager_load = false
+  config.action_controller.default_protect_from_forgery = true
   config.logger = Logger.new($stdout)
   Rails.logger  = config.logger
 end
